@@ -11,13 +11,15 @@
         box-sizing: border-box;
       }
 
+      /* Set height of body and the document to 100% */
       body,
       html {
         height: 100%;
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial;
       }
 
+      /* Style tab links */
       .tablink {
         background-color: #555;
         color: white;
@@ -34,6 +36,7 @@
         background-color: #777;
       }
 
+      /* Style the tab content (and add height:100% for full page content) */
       .tabcontent {
         color: white;
         display: none;
@@ -56,10 +59,14 @@
     </style>
   </head>
   <body>
-    <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">
+    <button class="tablink" onclick="openPage('Home', this, 'red')">
       Home
     </button>
-    <button class="tablink" onclick="openPage('News', this, 'green')">
+    <button
+      class="tablink"
+      onclick="openPage('News', this, 'green')"
+      id="defaultOpen"
+    >
       News
     </button>
     <button class="tablink" onclick="openPage('Contact', this, 'blue')">
@@ -90,24 +97,23 @@
     </div>
 
     <script>
-        function openPage(pageName,elmnt,color) {
-            let i, tabcontent, tablinks;
-
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (let i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            tablinks = document.getElementsByClassName("tablink");
-            for (let i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-
-            document.getElementById(pageName).style.display = "block";
-            elmnt.style.backgroundColor = color;
+      function openPage(pageName, elmnt, color) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
         }
 
-        document.getElementById("defaultOpen").click();
+        tablinks = document.getElementsByClassName("tablink");
+        for (let i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+        }
+
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+      }
+
+      document.getElementById("defaultOpen").click();
     </script>
   </body>
 </html>
